@@ -9,6 +9,7 @@ import android.databinding.ObservableInt;
 
 public class MainViewModel implements ContactContract.ViewModel {
     public ObservableInt progressVisibility;
+
     @Override
     public void fetchContacts() {
 
