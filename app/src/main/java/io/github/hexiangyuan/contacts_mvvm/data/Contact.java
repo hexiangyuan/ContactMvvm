@@ -5,7 +5,7 @@ package io.github.hexiangyuan.contacts_mvvm.data;
  * Date  : 16-11-23
  */
 
-public class Contact extends ResultsBean {
+public class Contact {
 
 
     /**

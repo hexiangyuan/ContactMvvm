@@ -1,6 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
 
-</LinearLayout>
+        <variable
+            name="itemViewModel"
+            type="io.github.hexiangyuan.contacts_mvvm.viewmodel.ItemContactViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/item_contact"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:onClick="@{itemViewModel::onItemClick}"
+        android:padding="@dimen/spacing_large">
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/image_people"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            tools:imageUrl="@{itemViewModel.pictureProfile}"/>
+
+
+        <TextView
+            android:id="@+id/label_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/image_people"
+            android:layout_marginLeft="@dimen/spacing_large"
+            android:layout_marginTop="@dimen/spacing_large"
+            android:layout_toRightOf="@+id/image_people"
+            android:text="@{itemViewModel.fullName}"
+            android:textColor="@android:color/primary_text_light"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            tools:text="mr gary allen"/>
+
+        <TextView
+            android:id="@+id/label_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/label_name"
+            android:layout_below="@+id/label_name"
+            android:text="@{itemViewModel.cell}"
+            android:textColor="@android:color/secondary_text_light"
+            android:textSize="14sp"
+            tools:text="0729-256-147"/>
+
+        <TextView
+            android:id="@+id/label_mail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/label_phone"
+            android:layout_below="@+id/label_phone"
+            android:text="@{itemViewModel.mail}"
+            android:textColor="@android:color/secondary_text_light"
+            android:textSize="14sp"
+            tools:text="gary.allen@example.com"/>
+
+    </RelativeLayout>
+
+
+</layout>

@@ -45,11 +45,14 @@ public class MainViewModel implements ContactContract.ViewModel {
                     @Override
                     public void onError(Throwable e) {
                         isRefreshing.set(false);
+                        progressVisibility.set(View.GONE);
                     }
 
                     @Override
                     public void onNext(BaseBean baseBean) {
-
+                        if (baseBean != null && baseBean.results != null) {
+                            view.contractLoaded(baseBean.results);
+                        }
                     }
                 });
     }

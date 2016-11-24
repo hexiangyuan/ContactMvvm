@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import io.github.hexiangyuan.contacts_mvvm.R;
 import io.github.hexiangyuan.contacts_mvvm.adapter.ContactsAdapter;
@@ -41,8 +41,14 @@ public class MainActivity extends AppCompatActivity implements ContactContract.V
     }
 
     @Override
-    public void contractLoaded(ArrayList<Contact> contacts) {
+    public void contractLoaded(List<Contact> contacts) {
         adapter.setContacts(contacts);
         adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    protected void onDestroy() {
+        viewModel.destroy();
+        super.onDestroy();
     }
 }

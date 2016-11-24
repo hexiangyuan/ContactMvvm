@@ -8,7 +8,7 @@ package io.github.hexiangyuan.contacts_mvvm.data;
 public class BaseBean {
 
     public InfoBean info;
-    public java.util.List<ResultsBean> results;
+    public java.util.List<Contact> results;
 
     public static class InfoBean {
         public String seed;

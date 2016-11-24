@@ -1,12 +1,16 @@
 package io.github.hexiangyuan.contacts_mvvm.adapter;
 
+import android.databinding.DataBindingUtil;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
+import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
-import java.util.ArrayList;
+import java.util.List;
 
+import io.github.hexiangyuan.contacts_mvvm.R;
 import io.github.hexiangyuan.contacts_mvvm.data.Contact;
+import io.github.hexiangyuan.contacts_mvvm.databinding.ItemContactsBinding;
+import io.github.hexiangyuan.contacts_mvvm.viewmodel.ItemContactViewModel;
 
 /**
  * Creator:HeXiangYuan
@@ -15,31 +19,46 @@ import io.github.hexiangyuan.contacts_mvvm.data.Contact;
 
 public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.ContactViewHolder>{
 
-    private ArrayList<Contact> contacts;
+    private List<Contact> contacts;
 
     @Override
     public ContactViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return null;
+        ItemContactsBinding contactsBinding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()),
+                R.layout.item_contacts, parent, false);
+        return new ContactViewHolder(contactsBinding);
     }
 
-    public void setContacts(ArrayList<Contact> contacts) {
+    public void setContacts(List<Contact> contacts) {
         this.contacts = contacts;
+        notifyDataSetChanged();
     }
 
     @Override
     public void onBindViewHolder(ContactViewHolder holder, int position) {
-
+        holder.bindContact(contacts.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return contacts == null ? 0 : contacts.size();
     }
 
-    public class ContactViewHolder extends RecyclerView.ViewHolder{
+    class ContactViewHolder extends RecyclerView.ViewHolder {
+        private ItemContactsBinding itemContactsBinding;
 
-        public ContactViewHolder(View itemView) {
-            super(itemView);
+        ContactViewHolder(ItemContactsBinding itemContactsBinding) {
+            super(itemContactsBinding.itemContact);
+            this.itemContactsBinding = itemContactsBinding;
+        }
+
+        void bindContact(Contact contact) {
+            if (itemContactsBinding.getItemViewModel() == null) {
+                ItemContactViewModel viewModel = new ItemContactViewModel(contact, itemView.getContext());
+                itemContactsBinding.setItemViewModel(viewModel);
+            } else {
+                itemContactsBinding.getItemViewModel().setContact(contact);
+            }
+
         }
     }
 }

@@ -1,6 +1,6 @@
 package io.github.hexiangyuan.contacts_mvvm.viewmodel;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import io.github.hexiangyuan.contacts_mvvm.data.Contact;
 
@@ -12,7 +12,7 @@ import io.github.hexiangyuan.contacts_mvvm.data.Contact;
 public interface ContactContract {
 
     interface View {
-        void contractLoaded(ArrayList<Contact> contacts);
+        void contractLoaded(List<Contact> contacts);
     }
 
     interface ViewModel {
