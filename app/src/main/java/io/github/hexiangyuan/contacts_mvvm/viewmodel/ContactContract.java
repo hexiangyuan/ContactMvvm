@@ -1,5 +1,7 @@
 package io.github.hexiangyuan.contacts_mvvm.viewmodel;
 
+import android.content.Context;
+
 import java.util.List;
 
 import io.github.hexiangyuan.contacts_mvvm.data.Contact;
@@ -13,6 +15,7 @@ public interface ContactContract {
 
     interface View {
         void contractLoaded(List<Contact> contacts);
+        Context getContext();
     }
 
     interface ViewModel {

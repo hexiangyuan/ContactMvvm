@@ -1,5 +1,6 @@
 package io.github.hexiangyuan.contacts_mvvm.view;
 
+import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -44,6 +45,11 @@ public class MainActivity extends AppCompatActivity implements ContactContract.V
     public void contractLoaded(List<Contact> contacts) {
         adapter.setContacts(contacts);
         adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public Context getContext() {
+        return this;
     }
 
     @Override

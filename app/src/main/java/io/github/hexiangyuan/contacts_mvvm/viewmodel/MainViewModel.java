@@ -4,6 +4,7 @@ import android.databinding.ObservableBoolean;
 import android.databinding.ObservableInt;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.View;
+import android.widget.Toast;
 
 import io.github.hexiangyuan.contacts_mvvm.data.BaseBean;
 import io.github.hexiangyuan.contacts_mvvm.net.HttpHelper;
@@ -44,6 +45,7 @@ public class MainViewModel implements ContactContract.ViewModel {
 
                     @Override
                     public void onError(Throwable e) {
+                        Toast.makeText(view.getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                         isRefreshing.set(false);
                         progressVisibility.set(View.GONE);
                     }
