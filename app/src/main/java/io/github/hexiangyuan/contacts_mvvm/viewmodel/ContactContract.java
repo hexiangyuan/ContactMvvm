@@ -2,7 +2,7 @@ package io.github.hexiangyuan.contacts_mvvm.viewmodel;
 
 import java.util.ArrayList;
 
-import io.github.hexiangyuan.contacts_mvvm.Contact;
+import io.github.hexiangyuan.contacts_mvvm.data.Contact;
 
 /**
  * Creator:HeXiangYuan

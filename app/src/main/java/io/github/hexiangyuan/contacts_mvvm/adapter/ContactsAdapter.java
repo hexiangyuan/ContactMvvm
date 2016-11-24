@@ -6,7 +6,7 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
-import io.github.hexiangyuan.contacts_mvvm.Contact;
+import io.github.hexiangyuan.contacts_mvvm.data.Contact;
 
 /**
  * Creator:HeXiangYuan

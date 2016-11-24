@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="mainViewModel"
             type="io.github.hexiangyuan.contacts_mvvm.viewmodel.MainViewModel" />
@@ -15,17 +16,25 @@
         android:layout_height="match_parent"
         tools:context="io.github.hexiangyuan.contacts_mvvm.view.MainActivity">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recyclerView"
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/refreshLayout"
+            bind:onRefreshListener="@{mainViewModel.onRefreshListener}"
+            bind:refreshing ="@{mainViewModel.isRefreshing}"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:listitem="@layout/item_contacts" />
+            android:layout_height="match_parent">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:listitem="@layout/item_contacts" />
+        </android.support.v4.widget.SwipeRefreshLayout>
 
         <ProgressBar
             android:id="@+id/progress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            app:visibility="@{mainViewModel.progressVisibility}" />
+            android:visibility="@{mainViewModel.progressVisibility}" />
     </RelativeLayout>
 </layout>

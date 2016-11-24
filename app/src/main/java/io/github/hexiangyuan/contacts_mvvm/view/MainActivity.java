@@ -7,27 +7,31 @@ import android.support.v7.widget.LinearLayoutManager;
 
 import java.util.ArrayList;
 
-import io.github.hexiangyuan.contacts_mvvm.Contact;
 import io.github.hexiangyuan.contacts_mvvm.R;
 import io.github.hexiangyuan.contacts_mvvm.adapter.ContactsAdapter;
+import io.github.hexiangyuan.contacts_mvvm.data.Contact;
 import io.github.hexiangyuan.contacts_mvvm.databinding.ActivityMainBinding;
 import io.github.hexiangyuan.contacts_mvvm.viewmodel.ContactContract;
+import io.github.hexiangyuan.contacts_mvvm.viewmodel.MainViewModel;
 
 ;
 
 public class MainActivity extends AppCompatActivity implements ContactContract.View {
     private ActivityMainBinding mainActivityBinding;
     private ContactsAdapter adapter;
-
-    public void setViewModel(ContactContract.View view) {
-        view = this;
-    }
+    private MainViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mainActivityBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        initDataBinding();
         initRecyclerView();
+    }
+
+    private void initDataBinding() {
+        mainActivityBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        viewModel = new MainViewModel(this);
+        mainActivityBinding.setMainViewModel(viewModel);
     }
 
     private void initRecyclerView() {
