@@ -1,0 +1,3 @@
+# ContactMvvm
+* 一个学习使用ＭＶＶＭ　的列表ｄｅｍｏ
+* 用到的框架是Ｒｘjava retrfit databindingsupport...
