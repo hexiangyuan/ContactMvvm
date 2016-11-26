@@ -1,10 +1,11 @@
 package io.github.hexiangyuan.contacts_mvvm.viewmodel;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
-import android.widget.Toast;
 
 import io.github.hexiangyuan.contacts_mvvm.data.Contact;
+import io.github.hexiangyuan.contacts_mvvm.view.TestDataBinding;
 
 /**
  * Creator:HeXiangYuan
@@ -41,6 +42,7 @@ public class ItemContactViewModel {
     }
 
     public void onItemClick(View view) {
-        Toast.makeText(context, contact.name.first, Toast.LENGTH_SHORT).show();
+        Intent i = new Intent(context, TestDataBinding.class);
+       context.startActivity(i);
     }
 }
